@@ -11,25 +11,27 @@ on:
 
 jobs:
   check-frontend:
+    name: 'Check Frontend'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - working-directory: 'react-client'
+    - run: cd react-client
     - run: npm install
     - run: npm run tsc
     - run: npm run lint
 
   build-frontend:
+    name: 'Build Frontend Artifact'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - working-directory: 'react-client'
+    - run: cd react-client
     - run: npm install
     - run: npm run build
     - uses: actions/upload-artifact@v2
@@ -38,13 +40,14 @@ jobs:
         path: build/
 
   check-backend:
+    name: 'Check Backend'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - working-directory: 'server'
+    - run: cd server
     - run: npm install
     - run: npm run tsc
     - run: npm run lint
