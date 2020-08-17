@@ -132,4 +132,13 @@ have a load balancer that will redirect the user to the server that have that ro
 
 - Write test for everything! (Unit, functional, load, integration and e2e)
 
+- Move the functionality of the message receivers on the Room to a particular class to handle the operations.
 
+- Move the functionality of the room loop to a method of the business class.
+
+- Add a Global State Manager on the React client like [Recoil](https://recoiljs.org/) or another of the million 
+alternatives that have available.
+
+- Move the connection logic from the `App.tsx` to a external class.
+
+- Implement [Storybook](https://storybook.js.org/) to test the Frontend Components individually.
