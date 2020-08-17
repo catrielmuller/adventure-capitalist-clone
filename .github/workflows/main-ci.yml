@@ -68,17 +68,11 @@ jobs:
       with:
         name: public
         path: server/public
-    - run: rm .gitignore
-      working-directory: server
-    - run: ls -a
-    - run: ls -a
-      working-directory: server
-    - run: ls -a
-      working-directory: server/public
     - uses: akhileshns/heroku-deploy@v3.4.6
       with:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "adventure-capitalist-clone-dem"
         heroku_email: "catrielmuller@gmail.com"
+        usedocker: true
         appdir: server
 
