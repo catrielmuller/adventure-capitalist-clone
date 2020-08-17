@@ -18,10 +18,12 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: cd react-client
     - run: npm install
+      working-directory: react-client
     - run: npm run tsc
+      working-directory: react-client
     - run: npm run lint
+      working-directory: react-client
 
   build-frontend:
     name: 'Build Frontend Artifact'
@@ -31,13 +33,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: cd react-client
     - run: npm install
+      working-directory: react-client
     - run: npm run build
+      working-directory: react-client
     - uses: actions/upload-artifact@v2
       with:
         name: public
-        path: build/
+        path: react-client/build/
 
   check-backend:
     name: 'Check Backend'
@@ -47,8 +50,10 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: cd server
     - run: npm install
+      working-directory: server
     - run: npm run tsc
+      working-directory: server
     - run: npm run lint
+      working-directory: server
 
