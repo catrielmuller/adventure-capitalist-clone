@@ -27,6 +27,7 @@ jobs:
 
   build-frontend:
     name: 'Build Frontend Artifact'
+    needs: [check-frontend]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -56,4 +57,24 @@ jobs:
       working-directory: server
     - run: npm run lint
       working-directory: server
+  
+  Deploy:
+    name: 'Deploy to Heroku'
+    needs: [check-backend, build-frontend]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - uses: actions/download-artifact@v2
+      with:
+        name: public
+        path: server/public
+    - uses: akhileshns/heroku-deploy@v3.4.6
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "adventure-capitalist-clone-dem"
+        heroku_email: "catrielmuller@gmail.com"
+        appdir: server
 
