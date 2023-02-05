@@ -5,4 +5,5 @@ export enum Colors {
   Text = '#231e2b',
   BackgroundAlt = '#f7feff',
   BackgroundDisabled = '#dd3b3b',
+  Money = '#10FF51',
 }

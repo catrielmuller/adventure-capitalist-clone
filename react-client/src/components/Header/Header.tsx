@@ -13,8 +13,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderContent = styled.div`
-  color: ${Colors.Title};
-  font-size: 3rem;
+  color: ${Colors.Money};
   padding: 20px;
   text-align: right;
 `;
